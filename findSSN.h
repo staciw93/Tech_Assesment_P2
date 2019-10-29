@@ -7,9 +7,10 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <cstring>
 
 // determine if a single character of a string is a number
-bool isNum(std::string inputString);
+bool isNum(char inputChar);
 
 // determine if a string is a SSN
 bool isSSN(std::string inputString);

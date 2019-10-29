@@ -4,7 +4,7 @@
 #include "findSSN.h"
 
 int main(int argc, char const *argv[]) {
-  //todo: replace with command line args
+  //TODO: replace with command line args
   std::string inFileName = "test1.txt";
   std::string outFileName = "test1_redacted.txt";
 
