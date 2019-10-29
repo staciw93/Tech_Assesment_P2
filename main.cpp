@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "findSSN.h"
 
 int main(int argc, char const *argv[]) {
   //todo: replace with command line args
