@@ -12,8 +12,10 @@
 // determine if a single character of a string is a number
 bool isNum(char inputChar);
 
-// determine if a string is a SSN
-bool isSSN(std::string inputString);
+// if beginig of string is SSN replace with redacted SSN
+std::string redactSSN(std::string inputString);
+
+// replace beginging of string with redacted SSN
 
 
 #endif

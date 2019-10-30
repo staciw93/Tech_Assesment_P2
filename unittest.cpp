@@ -22,19 +22,19 @@ TEST_CASE("Test isNum", "[digit]"){
   REQUIRE( isNum('5') );
 }
 
-TEST_CASE("Test isSSN", "[SSN]"){
+TEST_CASE("Test redactSSN", "[SSN]"){
   std::string testStrings[6] = {"asdf", "123-45-6789", "45a-34-0x9e", "aTe-ir-AWdi", "69487234514", "aienvirkslr"};
 
   //test string of wrong length
-  REQUIRE( !isSSN(testStrings[0]) );
+  REQUIRE( redactSSN(testStrings[0]) == "asdf");
   //test should pass
-  REQUIRE( isSSN(testStrings[1]) );
+  REQUIRE( redactSSN(testStrings[1]) == "***-**-****" );
   //test right format with letters and number
-  REQUIRE( !isSSN(testStrings[2]) );
+  REQUIRE( redactSSN(testStrings[2]) == "45a-34-0x9e" );
   //test right format only letters
-  REQUIRE( !isSSN(testStrings[3]) );
+  REQUIRE( redactSSN(testStrings[3]) == "aTe-ir-AWdi" );
   //test right length only numbers
-  REQUIRE( !isSSN(testStrings[4]) );
+  REQUIRE( redactSSN(testStrings[4]) == "69487234514" );
   //test right length only letters
-  REQUIRE( !isSSN(testStrings[5]) );
+  REQUIRE( redactSSN(testStrings[5]) == "aienvirkslr" );
 }

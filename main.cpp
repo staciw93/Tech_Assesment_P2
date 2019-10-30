@@ -1,12 +1,17 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 #include "findSSN.h"
 
 int main(int argc, char const *argv[]) {
-  //TODO: replace with command line args
-  std::string inFileName = "test1.txt";
-  std::string outFileName = "test1_redacted.txt";
+  if(argc != 2){
+    std::cout << "Filename required.";
+    return 0;
+  }
+
+  std::string inFileName = argv[1];
+  std::string outFileName = "redacted_" + inFileName;
 
   //open files for reading and writing
   std::ifstream infile;
@@ -15,16 +20,19 @@ int main(int argc, char const *argv[]) {
   outfile.open(outFileName);
 
   std::string text;
+  std::string ending;
 
   if( infile.is_open() ){
-    while( getline(infile, text) ){
-      std::cout << text << '\n';
-      outfile << text << std::endl;
+
+    //extracts space seperated words
+    while( infile >> text ){
+
+      text = redactSSN(text);
+      outfile << text << ' ';
     }
     infile.close();
     outfile.close();
   }
 
-  std::cout << "main fin\n";
   return 0;
 }
